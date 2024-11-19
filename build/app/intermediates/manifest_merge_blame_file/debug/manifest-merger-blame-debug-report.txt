@@ -1,0 +1,201 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.flutter_blue_app"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="34" />
+10    <!--
+11         Flutter needs it to communicate with the running application
+12         to allow setting breakpoints, to provide hot reload, etc.
+13    -->
+14    <uses-permission android:name="android.permission.INTERNET" />
+14-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/debug/AndroidManifest.xml:6:5-66
+14-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/debug/AndroidManifest.xml:6:22-64
+15    <uses-permission android:name="android.permission.BLUETOOTH" />
+15-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:3:4-67
+15-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:3:21-64
+16    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+16-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:4:4-73
+16-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:4:21-70
+17    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+17-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:5:4-79
+17-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:5:21-77
+18    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+18-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:6:4-77
+18-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:6:21-75
+19    <uses-permission
+19-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:7:4-8:57
+20        android:name="android.permission.BLUETOOTH_SCAN"
+20-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:7:21-69
+21        android:usesPermissionFlags="neverForLocation" />
+21-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:8:8-54
+22    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+22-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:9:4-75
+22-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:9:21-72
+23    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+23-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:10:4-77
+23-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:10:21-74
+24
+25    <permission
+25-->[androidx.core:core:1.13.1] /home/maoyang/.gradle/caches/transforms-3/e0bb4f42551a4b77c4f8cb574af9354e/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+26        android:name="com.example.flutter_blue_app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+26-->[androidx.core:core:1.13.1] /home/maoyang/.gradle/caches/transforms-3/e0bb4f42551a4b77c4f8cb574af9354e/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+27        android:protectionLevel="signature" />
+27-->[androidx.core:core:1.13.1] /home/maoyang/.gradle/caches/transforms-3/e0bb4f42551a4b77c4f8cb574af9354e/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+28
+29    <uses-permission android:name="com.example.flutter_blue_app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+29-->[androidx.core:core:1.13.1] /home/maoyang/.gradle/caches/transforms-3/e0bb4f42551a4b77c4f8cb574af9354e/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+29-->[androidx.core:core:1.13.1] /home/maoyang/.gradle/caches/transforms-3/e0bb4f42551a4b77c4f8cb574af9354e/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+30
+31    <application
+31-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:11:4-49:19
+32        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+32-->[androidx.core:core:1.13.1] /home/maoyang/.gradle/caches/transforms-3/e0bb4f42551a4b77c4f8cb574af9354e/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+33        android:debuggable="true"
+34        android:icon="@mipmap/ic_launcher"
+34-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:13:9-43
+35        android:label="flutter_blue_app" >
+35-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:12:9-41
+36        <activity
+36-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:14:9-43:20
+37            android:name="com.example.flutter_blue_app.MainActivity"
+37-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:15:13-41
+38            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+38-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:19:13-163
+39            android:exported="true"
+39-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:16:13-36
+40            android:hardwareAccelerated="true"
+40-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:20:13-47
+41            android:launchMode="singleTop"
+41-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:17:13-43
+42            android:theme="@style/LaunchTheme"
+42-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:18:13-47
+43            android:windowSoftInputMode="adjustResize" >
+43-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:21:13-55
+44
+45            <!--
+46                 Specifies an Android theme to apply to this Activity as soon as
+47                 the Android process has started. This theme is visible to the user
+48                 while the Flutter UI initializes. After that, this theme continues
+49                 to determine the Window background behind the Flutter UI.
+50            -->
+51            <meta-data
+51-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:26:13-29:17
+52                android:name="io.flutter.embedding.android.NormalTheme"
+52-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:27:15-70
+53                android:resource="@style/NormalTheme" />
+53-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:28:15-52
+54            <!--
+55                 Displays an Android View that continues showing the launch screen
+56                 Drawable until Flutter paints its first frame, then this splash
+57                 screen fades out. A splash screen is useful to avoid any visual
+58                 gap between the end of Android's launch screen and the painting of
+59                 Flutter's first frame.
+60            -->
+61            <meta-data
+61-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:35:13-38:17
+62                android:name="io.flutter.embedding.android.SplashScreenDrawable"
+62-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:36:15-79
+63                android:resource="@drawable/launch_background" />
+63-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:37:15-61
+64
+65            <intent-filter>
+65-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:39:13-42:29
+66                <action android:name="android.intent.action.MAIN" />
+66-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:40:17-68
+66-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:40:25-66
+67
+68                <category android:name="android.intent.category.LAUNCHER" />
+68-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:41:17-76
+68-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:41:27-74
+69            </intent-filter>
+70        </activity>
+71        <!--
+72             Don't delete the meta-data below.
+73             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+74        -->
+75        <meta-data
+75-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:46:9-48:33
+76            android:name="flutterEmbedding"
+76-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:47:13-44
+77            android:value="2" />
+77-->/home/maoyang/workspace/opensources/blu_chat/android/app/src/main/AndroidManifest.xml:48:13-30
+78
+79        <uses-library
+79-->[androidx.window:window:1.2.0] /home/maoyang/.gradle/caches/transforms-3/d82fa242d4691049589e236dd948969d/transformed/jetified-window-1.2.0/AndroidManifest.xml:23:9-25:40
+80            android:name="androidx.window.extensions"
+80-->[androidx.window:window:1.2.0] /home/maoyang/.gradle/caches/transforms-3/d82fa242d4691049589e236dd948969d/transformed/jetified-window-1.2.0/AndroidManifest.xml:24:13-54
+81            android:required="false" />
+81-->[androidx.window:window:1.2.0] /home/maoyang/.gradle/caches/transforms-3/d82fa242d4691049589e236dd948969d/transformed/jetified-window-1.2.0/AndroidManifest.xml:25:13-37
+82        <uses-library
+82-->[androidx.window:window:1.2.0] /home/maoyang/.gradle/caches/transforms-3/d82fa242d4691049589e236dd948969d/transformed/jetified-window-1.2.0/AndroidManifest.xml:26:9-28:40
+83            android:name="androidx.window.sidecar"
+83-->[androidx.window:window:1.2.0] /home/maoyang/.gradle/caches/transforms-3/d82fa242d4691049589e236dd948969d/transformed/jetified-window-1.2.0/AndroidManifest.xml:27:13-51
+84            android:required="false" />
+84-->[androidx.window:window:1.2.0] /home/maoyang/.gradle/caches/transforms-3/d82fa242d4691049589e236dd948969d/transformed/jetified-window-1.2.0/AndroidManifest.xml:28:13-37
+85
+86        <provider
+86-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/maoyang/.gradle/caches/transforms-3/e6e310dd67a82668fe8398145a6eb814/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:24:9-32:20
+87            android:name="androidx.startup.InitializationProvider"
+87-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/maoyang/.gradle/caches/transforms-3/e6e310dd67a82668fe8398145a6eb814/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:25:13-67
+88            android:authorities="com.example.flutter_blue_app.androidx-startup"
+88-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/maoyang/.gradle/caches/transforms-3/e6e310dd67a82668fe8398145a6eb814/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:26:13-68
+89            android:exported="false" >
+89-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/maoyang/.gradle/caches/transforms-3/e6e310dd67a82668fe8398145a6eb814/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:27:13-37
+90            <meta-data
+90-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/maoyang/.gradle/caches/transforms-3/e6e310dd67a82668fe8398145a6eb814/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
+91                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+91-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/maoyang/.gradle/caches/transforms-3/e6e310dd67a82668fe8398145a6eb814/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+92                android:value="androidx.startup" />
+92-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/maoyang/.gradle/caches/transforms-3/e6e310dd67a82668fe8398145a6eb814/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+93            <meta-data
+93-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/maoyang/.gradle/caches/transforms-3/ae08dbe0f52798a52cca287ceff74f40/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+94                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+94-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/maoyang/.gradle/caches/transforms-3/ae08dbe0f52798a52cca287ceff74f40/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+95                android:value="androidx.startup" />
+95-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/maoyang/.gradle/caches/transforms-3/ae08dbe0f52798a52cca287ceff74f40/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+96        </provider>
+97
+98        <receiver
+98-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/maoyang/.gradle/caches/transforms-3/ae08dbe0f52798a52cca287ceff74f40/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+99            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+99-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/maoyang/.gradle/caches/transforms-3/ae08dbe0f52798a52cca287ceff74f40/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+100            android:directBootAware="false"
+100-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/maoyang/.gradle/caches/transforms-3/ae08dbe0f52798a52cca287ceff74f40/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+101            android:enabled="true"
+101-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/maoyang/.gradle/caches/transforms-3/ae08dbe0f52798a52cca287ceff74f40/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+102            android:exported="true"
+102-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/maoyang/.gradle/caches/transforms-3/ae08dbe0f52798a52cca287ceff74f40/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+103            android:permission="android.permission.DUMP" >
+103-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/maoyang/.gradle/caches/transforms-3/ae08dbe0f52798a52cca287ceff74f40/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+104            <intent-filter>
+104-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/maoyang/.gradle/caches/transforms-3/ae08dbe0f52798a52cca287ceff74f40/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+105                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+105-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/maoyang/.gradle/caches/transforms-3/ae08dbe0f52798a52cca287ceff74f40/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+105-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/maoyang/.gradle/caches/transforms-3/ae08dbe0f52798a52cca287ceff74f40/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+106            </intent-filter>
+107            <intent-filter>
+107-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/maoyang/.gradle/caches/transforms-3/ae08dbe0f52798a52cca287ceff74f40/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+108                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+108-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/maoyang/.gradle/caches/transforms-3/ae08dbe0f52798a52cca287ceff74f40/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+108-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/maoyang/.gradle/caches/transforms-3/ae08dbe0f52798a52cca287ceff74f40/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+109            </intent-filter>
+110            <intent-filter>
+110-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/maoyang/.gradle/caches/transforms-3/ae08dbe0f52798a52cca287ceff74f40/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+111                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+111-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/maoyang/.gradle/caches/transforms-3/ae08dbe0f52798a52cca287ceff74f40/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+111-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/maoyang/.gradle/caches/transforms-3/ae08dbe0f52798a52cca287ceff74f40/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+112            </intent-filter>
+113            <intent-filter>
+113-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/maoyang/.gradle/caches/transforms-3/ae08dbe0f52798a52cca287ceff74f40/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+114                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+114-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/maoyang/.gradle/caches/transforms-3/ae08dbe0f52798a52cca287ceff74f40/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+114-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/maoyang/.gradle/caches/transforms-3/ae08dbe0f52798a52cca287ceff74f40/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
+115            </intent-filter>
+116        </receiver>
+117    </application>
+118
+119</manifest>

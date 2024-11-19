@@ -16,7 +16,6 @@ class SelectBondedDevicePage extends StatefulWidget {
 }
 
 enum _DeviceAvailability {
-  no,
   maybe,
   yes,
 }
@@ -24,17 +23,23 @@ enum _DeviceAvailability {
 class _DeviceWithAvailability extends BluetoothDevice {
   BluetoothDevice device;
   _DeviceAvailability availability;
-  int rssi;
+  int? rssi;
 
-  _DeviceWithAvailability(this.device, this.availability, [this.rssi]);
+  _DeviceWithAvailability(this.device, this.availability) : super(
+    address: device.address,
+    name: device.name,
+    type: device.type,
+    bondState: device.bondState,
+    isConnected: device.isConnected
+  );
 }
 
 class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
-  List<_DeviceWithAvailability> devices = List<_DeviceWithAvailability>();
+  List<_DeviceWithAvailability> devices = <_DeviceWithAvailability>[];
 
   // Availability
-  StreamSubscription<BluetoothDiscoveryResult> _discoveryStreamSubscription;
-  bool _isDiscovering;
+  late StreamSubscription<BluetoothDiscoveryResult> _discoveryStreamSubscription;
+  bool _isDiscovering = false;
 
   _SelectBondedDevicePage();
 
@@ -100,7 +105,7 @@ class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
   @override
   void dispose() {
     // Avoid memory leak (`setState` after dispose) and cancel discovery
-    _discoveryStreamSubscription?.cancel();
+    _discoveryStreamSubscription.cancel();
 
     super.dispose();
   }
@@ -110,11 +115,12 @@ class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
     List<BluetoothDeviceListEntry> list = devices
         .map((_device) => BluetoothDeviceListEntry(
               device: _device.device,
-              rssi: _device.rssi,
+              rssi: _device.rssi ?? 0,
               enabled: _device.availability == _DeviceAvailability.yes,
               onTap: () {
                 Navigator.of(context).pop(_device.device);
               },
+              onLongPress: () {},
             ))
         .toList();
     return Scaffold(

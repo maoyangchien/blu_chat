@@ -1,0 +1,48 @@
+{
+    // 使用 IntelliSense 以得知可用的屬性。
+    // 暫留以檢視現有屬性的描述。
+    // 如需詳細資訊，請瀏覽: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "blue_chat (Android Emulator)",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "emulator-5554"
+        },
+        {
+            "name": "blue_chat (Android Emulator - profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "deviceId": "emulator-5554"
+        },
+        {
+            "name": "blue_chat (Android Emulator - release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "deviceId": "emulator-5554"
+        },
+        {
+            "name": "blue_chat (Physical Device)",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "46251JEKB16783"
+        },
+        {
+            "name": "blue_chat (Physical Device - profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "deviceId": "46251JEKB16783"
+        },
+        {
+            "name": "blue_chat (Physical Device - release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "deviceId": "46251JEKB16783"
+        }
+    ]
+}

@@ -3,10 +3,10 @@ import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 
 class BluetoothDeviceListEntry extends ListTile {
   BluetoothDeviceListEntry({
-    @required BluetoothDevice device,
-    int rssi,
-    GestureTapCallback onTap,
-    GestureLongPressCallback onLongPress,
+    required BluetoothDevice device,
+    required int rssi,
+    required GestureTapCallback onTap,
+    required GestureLongPressCallback onLongPress,
     bool enabled = true,
   }) : super(
           onTap: onTap,
@@ -19,21 +19,19 @@ class BluetoothDeviceListEntry extends ListTile {
           trailing: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              rssi != null
-                  ? Container(
-                      margin: new EdgeInsets.all(8.0),
-                      child: DefaultTextStyle(
-                        style: _computeTextStyle(rssi),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            Text(rssi.toString()),
-                            Text('dBm'),
-                          ],
-                        ),
-                      ),
-                    )
-                  : Container(width: 0, height: 0),
+              Container(
+                margin: new EdgeInsets.all(8.0),
+                child: DefaultTextStyle(
+                  style: _computeTextStyle(rssi),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Text(rssi.toString()),
+                      Text('dBm'),
+                    ],
+                  ),
+                ),
+              ),
               device.isConnected
                   ? Icon(Icons.import_export)
                   : Container(width: 0, height: 0),

@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 import 'dart:typed_data';
 
@@ -7,8 +6,8 @@ import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 class Communication {
   
   //Bluetooth
-  FlutterBluetoothSerial fls;
-  BluetoothConnection connection;
+  FlutterBluetoothSerial? fls;
+  BluetoothConnection? connection;
   BluetoothState bluetoothState = BluetoothState.UNKNOWN;
   String result = '';
 
@@ -17,9 +16,8 @@ class Communication {
     await BluetoothConnection.toAddress(address).then((_connection) {
       print('Connected to the device');
       connection = _connection;
-
       // Creates a listener to receive data
-      connection.input.listen(onDataReceived).onDone(() {});
+      connection?.input?.listen(onDataReceived).onDone(() {});
     }).catchError((error) {
       print('Cannot connect, exception occured');
     });
@@ -61,16 +59,16 @@ class Communication {
 
     if (text.length > 0) {
       try {
-        connection.output.add(utf8.encode(text + "\r\n"));
-        await connection.output.allSent;
+        connection!.output.add(utf8.encode(text + "\r\n"));
+        await connection!.output.allSent;
       } catch (e) {}
     }
   }
 
   Future<void> dispose() async{
-    fls.setPairingRequestHandler(null);
-    if (connection.isConnected) {
-      connection.dispose();
+    fls?.setPairingRequestHandler(null);
+    if (connection?.isConnected ?? false) {
+      connection!.dispose();
       connection = null;
     }
   }

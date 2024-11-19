@@ -22,43 +22,20 @@ class _MainPage extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-
-    // Get current state
-    FlutterBluetoothSerial.instance.state.then((state) {
-      setState(() {
-        _bluetoothState = state;
-      });
-    });
-
-    Future.doWhile(() async {
-      // Wait if adapter not enabled
-      if (await FlutterBluetoothSerial.instance.isEnabled) {
-        return false;
-      }
-      await Future.delayed(Duration(milliseconds: 0xDD));
-      return true;
-    }).then((_) {
-      // Update the address field
-      FlutterBluetoothSerial.instance.address.then((address) {
-        setState(() {
-          _address = address;
+    
+    Future.delayed(Duration.zero, () async {
+      try {
+        // 直接請求啟用藍牙
+        await FlutterBluetoothSerial.instance.requestEnable().then((_) {
+          FlutterBluetoothSerial.instance.state.then((state) {
+            setState(() {
+              _bluetoothState = state;
+            });
+          });
         });
-      });
-    });
-
-    FlutterBluetoothSerial.instance.name.then((name) {
-      setState(() {
-        _name = name;
-      });
-    });
-
-    // Listen for futher state changes
-    FlutterBluetoothSerial.instance
-        .onStateChanged()
-        .listen((BluetoothState state) {
-      setState(() {
-        _bluetoothState = state;
-      });
+      } catch (e) {
+        print('藍牙啟用失敗: $e');
+      }
     });
   }
 
@@ -108,7 +85,7 @@ class _MainPage extends State<MainPage> {
             ListTile(
               title: const Text('Bluetooth status'),
               subtitle: Text(_bluetoothState.toString()),
-              trailing: RaisedButton(
+              trailing: ElevatedButton(
                 child: const Text('Settings'),
                 onPressed: () {
                   FlutterBluetoothSerial.instance.openSettings();
@@ -127,7 +104,7 @@ class _MainPage extends State<MainPage> {
             Divider(),
             ListTile(title: const Text('Devices discovery and connection')),
             ListTile(
-              title: RaisedButton(
+              title: ElevatedButton(
                 child: const Text('Connect to paired device to chat'),
                 onPressed: () async {
                   final BluetoothDevice selectedDevice =
@@ -139,12 +116,12 @@ class _MainPage extends State<MainPage> {
                     ),
                   );
 
-                  if (selectedDevice != null) {
+                  //if (selectedDevice != null) {
                     print('Connect -> selected ' + selectedDevice.address);
                     _startChat(context, selectedDevice);
-                  } else {
-                    print('Connect -> no device selected');
-                  }
+                  //} else {
+                  //  print('Connect -> no device selected');
+                  //}
                 },
               ),
             ),

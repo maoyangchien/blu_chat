@@ -7,10 +7,10 @@ import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 class ChatPage extends StatefulWidget {
   final BluetoothDevice server;
 
-  const ChatPage({this.server});
+  const ChatPage({required this.server});
 
   @override
-  _ChatPage createState() => new _ChatPage();
+  _ChatPage createState() => _ChatPage();
 }
 
 class _Message {
@@ -22,9 +22,9 @@ class _Message {
 
 class _ChatPage extends State<ChatPage> {
   static final clientID = 0;
-  BluetoothConnection connection;
+  late BluetoothConnection connection;
 
-  List<_Message> messages = List<_Message>();
+  List<_Message> messages = [];
   String _messageBuffer = '';
 
   final TextEditingController textEditingController =
@@ -32,7 +32,7 @@ class _ChatPage extends State<ChatPage> {
   final ScrollController listScrollController = new ScrollController();
 
   bool isConnecting = true;
-  bool get isConnected => connection != null && connection.isConnected;
+  bool get isConnected => connection.isConnected;
 
   bool isDisconnecting = false;
 
@@ -48,7 +48,7 @@ class _ChatPage extends State<ChatPage> {
         isDisconnecting = false;
       });
 
-      connection.input.listen(_onDataReceived).onDone(() {
+      connection.input?.listen(_onDataReceived).onDone(() {
         // Example: Detect which side closed the connection
         // There should be `isDisconnecting` flag to show are we are (locally)
         // in middle of disconnecting process, should be set before calling
@@ -76,7 +76,8 @@ class _ChatPage extends State<ChatPage> {
     if (isConnected) {
       isDisconnecting = true;
       connection.dispose();
-      connection = null;
+      // ignore: cast_from_null_always_fails
+      connection = null as BluetoothConnection;
     }
 
     super.dispose();
@@ -111,10 +112,10 @@ class _ChatPage extends State<ChatPage> {
     return Scaffold(
       appBar: AppBar(
           title: (isConnecting
-              ? Text('Connecting chat to ' + widget.server.name + '...')
+              ? Text('Connecting chat to ${widget.server.name ?? ""}...')
               : isConnected
-                  ? Text('Live chat with ' + widget.server.name)
-                  : Text('Chat log with ' + widget.server.name))),
+                  ? Text('Live chat with ${widget.server.name ?? ""}')
+                  : Text('Chat log with ${widget.server.name ?? ""}'))),
       body: SafeArea(
         child: Column(
           children: <Widget>[

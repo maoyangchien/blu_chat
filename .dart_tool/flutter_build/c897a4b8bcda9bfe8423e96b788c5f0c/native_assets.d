@@ -1,0 +1,1 @@
+ /home/maoyang/workspace/opensources/blu_chat/.dart_tool/flutter_build/c897a4b8bcda9bfe8423e96b788c5f0c/native_assets.yaml: 
