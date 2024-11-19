@@ -22,7 +22,7 @@ class _Message {
 
 class _ChatPage extends State<ChatPage> {
   static final clientID = 0;
-  late BluetoothConnection connection;
+  BluetoothConnection? connection;
 
   List<_Message> messages = [];
   String _messageBuffer = '';
@@ -32,7 +32,7 @@ class _ChatPage extends State<ChatPage> {
   final ScrollController listScrollController = new ScrollController();
 
   bool isConnecting = true;
-  bool get isConnected => connection.isConnected;
+  bool get isConnected => connection?.isConnected ?? false;
 
   bool isDisconnecting = false;
 
@@ -48,38 +48,31 @@ class _ChatPage extends State<ChatPage> {
         isDisconnecting = false;
       });
 
-      connection.input?.listen(_onDataReceived).onDone(() {
-        // Example: Detect which side closed the connection
-        // There should be `isDisconnecting` flag to show are we are (locally)
-        // in middle of disconnecting process, should be set before calling
-        // `dispose`, `finish` or `close`, which all causes to disconnect.
-        // If we except the disconnection, `onDone` should be fired as result.
-        // If we didn't except this (no flag set), it means closing by remote.
+      connection?.input?.listen(_onDataReceived).onDone(() {
         if (isDisconnecting) {
           print('Disconnecting locally!');
         } else {
           print('Disconnected remotely!');
         }
-        if (this.mounted) {
+        if (mounted) {
           setState(() {});
         }
       });
     }).catchError((error) {
-      print('Cannot connect, exception occured');
+      print('Cannot connect, exception occurred');
       print(error);
+      setState(() {
+        isConnecting = false;
+      });
     });
   }
 
   @override
   void dispose() {
-    // Avoid memory leak (`setState` after dispose) and disconnect
     if (isConnected) {
       isDisconnecting = true;
-      connection.dispose();
-      // ignore: cast_from_null_always_fails
-      connection = null as BluetoothConnection;
+      connection?.dispose();
     }
-
     super.dispose();
   }
 
@@ -211,13 +204,15 @@ class _ChatPage extends State<ChatPage> {
   }
 
   void _sendMessage(String text) async {
+    if (connection == null) return;
+    
     text = text.trim();
     textEditingController.clear();
 
     if (text.length > 0) {
       try {
-        connection.output.add(utf8.encode(text + "\r\n"));
-        await connection.output.allSent;
+        connection!.output.add(utf8.encode(text + "\r\n"));
+        await connection!.output.allSent;
 
         setState(() {
           messages.add(_Message(clientID, text));
@@ -230,7 +225,7 @@ class _ChatPage extends State<ChatPage> {
               curve: Curves.easeOut);
         });
       } catch (e) {
-        // Ignore error, but notify state
+        print('Error sending message: $e');
         setState(() {});
       }
     }

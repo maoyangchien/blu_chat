@@ -1,2 +1,6 @@
 # This is a generated file; do not edit or check into version control.
 flutter_bluetooth_serial=/home/maoyang/.pub-cache/hosted/pub.dev/flutter_bluetooth_serial-0.4.0/
+permission_handler=/home/maoyang/.pub-cache/hosted/pub.dev/permission_handler-10.4.5/
+permission_handler_android=/home/maoyang/.pub-cache/hosted/pub.dev/permission_handler_android-10.3.6/
+permission_handler_apple=/home/maoyang/.pub-cache/hosted/pub.dev/permission_handler_apple-9.1.4/
+permission_handler_windows=/home/maoyang/.pub-cache/hosted/pub.dev/permission_handler_windows-0.1.3/

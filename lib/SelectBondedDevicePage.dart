@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import './BluetoothDeviceListEntry.dart';
 
@@ -37,8 +39,8 @@ class _DeviceWithAvailability extends BluetoothDevice {
 class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
   List<_DeviceWithAvailability> devices = <_DeviceWithAvailability>[];
 
-  // Availability
-  late StreamSubscription<BluetoothDiscoveryResult> _discoveryStreamSubscription;
+  // 將 _discoveryStreamSubscription 改為可空類型
+  StreamSubscription<BluetoothDiscoveryResult>? _discoveryStreamSubscription;
   bool _isDiscovering = false;
 
   _SelectBondedDevicePage();
@@ -47,40 +49,53 @@ class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
   void initState() {
     super.initState();
 
-    _isDiscovering = widget.checkAvailability;
+    requestPermissions().then((_) {
+      _isDiscovering = widget.checkAvailability;
 
-    if (_isDiscovering) {
-      _startDiscovery();
-    }
+      if (_isDiscovering) {
+        _startDiscovery();
+      }
 
-    // Setup a list of the bonded devices
-    FlutterBluetoothSerial.instance
-        .getBondedDevices()
-        .then((List<BluetoothDevice> bondedDevices) {
-      setState(() {
-        devices = bondedDevices
-            .map(
-              (device) => _DeviceWithAvailability(
-                device,
-                widget.checkAvailability
-                    ? _DeviceAvailability.maybe
-                    : _DeviceAvailability.yes,
-              ),
-            )
-            .toList();
+      // Setup a list of the bonded devices
+      FlutterBluetoothSerial.instance
+          .getBondedDevices()
+          .then((List<BluetoothDevice> bondedDevices) {
+        setState(() {
+          devices = bondedDevices
+              .map(
+                (device) => _DeviceWithAvailability(
+                  device,
+                  widget.checkAvailability
+                      ? _DeviceAvailability.maybe
+                      : _DeviceAvailability.yes,
+                ),
+              )
+              .toList();
+        });
       });
     });
   }
 
-  void _restartDiscovery() {
-    setState(() {
-      _isDiscovering = true;
-    });
-
-    _startDiscovery();
+  Future<void> requestPermissions() async {
+    if (Platform.isAndroid) {
+      if (await Permission.bluetooth.status.isDenied) {
+        await Permission.bluetooth.request();
+      }
+      if (await Permission.bluetoothConnect.status.isDenied) {
+        await Permission.bluetoothConnect.request();
+      }
+      if (await Permission.bluetoothScan.status.isDenied) {
+        await Permission.bluetoothScan.request();
+      }
+      if (await Permission.location.status.isDenied) {
+        await Permission.location.request();
+      }
+    }
   }
 
   void _startDiscovery() {
+    _discoveryStreamSubscription?.cancel(); // 取消現有的訂閱（如果有的話）
+    
     _discoveryStreamSubscription =
         FlutterBluetoothSerial.instance.startDiscovery().listen((r) {
       setState(() {
@@ -95,18 +110,25 @@ class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
       });
     });
 
-    _discoveryStreamSubscription.onDone(() {
+    _discoveryStreamSubscription?.onDone(() {
       setState(() {
         _isDiscovering = false;
       });
     });
   }
 
+  void _restartDiscovery() {
+    setState(() {
+      _isDiscovering = true;
+    });
+
+    _startDiscovery();
+  }
+
   @override
   void dispose() {
-    // Avoid memory leak (`setState` after dispose) and cancel discovery
-    _discoveryStreamSubscription.cancel();
-
+    // 安全地取消訂閱
+    _discoveryStreamSubscription?.cancel();
     super.dispose();
   }
 
