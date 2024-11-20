@@ -25,7 +25,13 @@
             "deviceId": "emulator-5554"
         },
         {
-            "name": "blue_chat (Physical Device)",
+            "name": "blue_chat (Physical Device-Android 13)",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "YT956LTKUSWSKJU8"
+        },
+        {
+            "name": "blue_chat (Physical Device-Android 15)",
             "request": "launch",
             "type": "dart",
             "deviceId": "46251JEKB16783"
